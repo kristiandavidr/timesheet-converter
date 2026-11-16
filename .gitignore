@@ -1,0 +1,14 @@
+# Never commit timesheets or exports: they contain employee names, sick notes and photos.
+*.xlsx
+*.xls
+*.csv
+# ...except the clean template, which has no people in it.
+!template/format-timesheet-clean.xlsx
+
+# local test data and tooling
+local/
+.claude/
+__pycache__/
+*.pyc
+.venv/
+venv/
