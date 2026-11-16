@@ -64,7 +64,7 @@ async function useFile(f) {
     if (my !== seq) return;
     A = JSON.parse(res);
     if (A.period.ndays > 31) throw new Error('This file covers more than 31 days. Export one month from Jibble.');
-    $('info').innerHTML = `${A.people.length} people &middot; ${esc(fmt(A.period.start))} &ndash; ${esc(fmt(A.period.end))}`;
+    $('info').innerHTML = `${esc(fmt(A.period.start))} &ndash; ${esc(fmt(A.period.end))}`;
     $('export').disabled = false;
   } catch (e) {
     if (my !== seq) return;
@@ -99,7 +99,7 @@ $('export').addEventListener('click', async () => {
     url = URL.createObjectURL(new Blob([res.bytes], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
     const a = document.createElement('a');
     a.href = url; a.download = fileName(); a.click();
-    setMsg(`Done: <b>${esc(fileName())}</b> is in your Downloads. <a href="${url}" download="${esc(fileName())}">Download again</a>`, 'ok');
+    setMsg(`Downloaded <b>${esc(fileName())}</b>. <a href="${url}" download="${esc(fileName())}">Download again</a>`, 'ok');
     showSummary(S);
   } catch (e) {
     setMsg(esc(e.message), 'err');
